@@ -46,7 +46,7 @@ JWT_AUTH_COOKIE = 'react-app-auth'
 JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
 
 REST_AUTH_SERIALIZERS = {
-    'USER_DETAILS_SERIALIZER': 'drf_api.serializers.CurrentUserSerializer'
+    'USER_DETAILS_SERIALIZER': 'knowledge.serializers.CurrentUserSerializer'
 }
 
 # Quick-start development settings - unsuitable for production
@@ -82,7 +82,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'dj_rest_auth.registration',
     'posts',
-    'content',
+    'profiles',
     'comments',
     'likes',
     'followers'
