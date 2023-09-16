@@ -63,7 +63,7 @@ DEBUG = True
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 ALLOWED_HOSTS = [
-    'knowledge-api.herokuapp.com',
+    'knowledge-back-end.herokuapp.com',
     'localhost',
     '8000-bono94-project5advanced-xf08rh8gook.ws-eu104.gitpod.io',
     
