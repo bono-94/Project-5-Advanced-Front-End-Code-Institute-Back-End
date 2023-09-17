@@ -14,19 +14,48 @@ class Post(models.Model):
     ]
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    # public_id
 
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    # containers multiple
+
+    # private vs public
 
     post_type = models.CharField(
         max_length=32,
         choices=post_type_choices, default='idea'
     )
-    
-    title = models.CharField(max_length=255)
-    content = models.TextField(blank=True)
+    # topic
+    # category
+    # keywoards
+    # theory or procedure
+
+    folder_upload
+    file_upload
+    # image, video, audio, document
+    # doc, pdf,zip,xcl, csv, parquet
+
     image = models.ImageField(
         upload_to='images/', default='../default_post_rgq6aq', blank=True
     )
+    
+    title = models.CharField(max_length=255)
+    subtitle
+    # summary
+    content = models.TextField(blank=True)
+
+    # processes
+    # activities
+    # tasks
+    # steps
+    # methods
+
+
+
+
+    # inspiration
+    # source
+   
 
     class Meta:
         ordering = ['-created_at']

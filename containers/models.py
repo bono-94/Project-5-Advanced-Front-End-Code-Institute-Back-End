@@ -12,6 +12,13 @@ class Container(models.Model):
     
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    # knowledges 
+
+    # private vs public
+
+    # container image
+    # container_password
+    # container_password_value
     
     description = models.TextField()
     class Meta:

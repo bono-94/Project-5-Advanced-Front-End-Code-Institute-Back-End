@@ -10,11 +10,18 @@ class Profile(models.Model):
    
     owner = models.OneToOneField(User, on_delete=models.CASCADE)
     
-    first_name = models.CharField(max_length=255, blank=True)
-    content = models.TextField(blank=True)
     image = models.ImageField(
         upload_to='images/', default='../default_profile_qdjgyp'
     )
+    
+
+    first_name = models.CharField(max_length=255, blank=True)
+    location = models.CharField(max_length=255, blank=True)
+    age = models.IntegerField()
+    bio = models.TextField(blank=True)
+    # Contact
+    # Social media
+
 
     class Meta:
         ordering = ['-created_at']

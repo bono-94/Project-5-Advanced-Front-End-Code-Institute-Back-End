@@ -6,11 +6,16 @@ class Support(models.Model):
     Support model, related to 'owner', i.e. a User instance.
     """
     support_type_choices = [
-        ('idea', 'Idea'),
-        ('story', 'Story'),
-        ('journal', 'Journal'),
+        ('request', 'Request Knowledge'),
+        ('consultacy', 'Book a Consultancy'),
+        ('support', 'Support Ticket'),
         ('blog', 'Blog'),
     ]
+    status = [
+        ('open', 'Open'),
+        ('closed', 'Closed')
+    ]
+
     created_at = models.DateTimeField(auto_now_add=True)
 
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -26,6 +31,10 @@ class Support(models.Model):
     image = models.ImageField(
         upload_to='images/', default='../default_post_rgq6aq', blank=True
     )
+    # datetime
+    # main question for consultancy
+    # content vs functional support
+
 
     class Meta:
         ordering = ['-created_at']
