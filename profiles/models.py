@@ -17,7 +17,6 @@ class Profile(models.Model):
 
     first_name = models.CharField(max_length=255, blank=True)
     location = models.CharField(max_length=255, blank=True)
-    age = models.IntegerField()
     bio = models.TextField(blank=True)
     # Contact
     # Social media

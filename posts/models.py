@@ -30,8 +30,8 @@ class Post(models.Model):
     # keywoards
     # theory or procedure
 
-    folder_upload
-    file_upload
+    # folder_upload
+    # file_upload
     # image, video, audio, document
     # doc, pdf,zip,xcl, csv, parquet
 
@@ -40,7 +40,7 @@ class Post(models.Model):
     )
     
     title = models.CharField(max_length=255)
-    subtitle
+    # subtitle
     # summary
     content = models.TextField(blank=True)
 

@@ -13,7 +13,7 @@ class Friend(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     
     owner = models.ForeignKey(
-        User, related_name='following', on_delete=models.CASCADE
+        User, related_name='friends', on_delete=models.CASCADE
     )
     requested = models.ForeignKey(
         User, related_name='requested', on_delete=models.CASCADE

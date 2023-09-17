@@ -25,6 +25,7 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [(
@@ -69,7 +70,6 @@ ALLOWED_HOSTS = [
     
     ]
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -82,6 +82,7 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
+    'crispy_forms',
     'rest_framework',
     'django_filters',
     'rest_framework.authtoken',
@@ -90,11 +91,16 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'dj_rest_auth.registration',
+    'django_summernote',
+    'containers',
     'posts',
     'profiles',
     'comments',
     'likes',
-    'followers'
+    'favourites',
+    'followers',
+    'friends',
+    'support'
 ]
 
 SITE_ID = 1
@@ -106,6 +112,8 @@ MESSAGES_TAGS = {
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-danger',
 }
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -164,6 +172,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
