@@ -2,5 +2,8 @@
   "dependencies": {
     "bootstrap": "^4.6.0",
     "react-bootstrap": "^1.6.3"
+  },
+  "devDependencies": {
+    "nsw": "^0.1.0"
   }
 }

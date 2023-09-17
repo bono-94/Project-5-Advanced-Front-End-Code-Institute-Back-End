@@ -1,29 +1,28 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class Post(models.Model):
+class Support(models.Model):
     """
-    Post model, related to 'owner', i.e. a User instance.
-    Default image set so that we can always reference image.url.
+    Support model, related to 'owner', i.e. a User instance.
     """
-    post_type_choices = [
+    support_type_choices = [
         ('idea', 'Idea'),
         ('story', 'Story'),
         ('journal', 'Journal'),
         ('blog', 'Blog'),
     ]
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    post_type = models.CharField(
+    support_type = models.CharField(
         max_length=32,
-        choices=post_type_choices, default='idea'
+        choices=support_type_choices, default='idea'
     )
-    
+
     title = models.CharField(max_length=255)
     content = models.TextField(blank=True)
+    support_ticket = models.IntegerField(blank=True)
     image = models.ImageField(
         upload_to='images/', default='../default_post_rgq6aq', blank=True
     )
