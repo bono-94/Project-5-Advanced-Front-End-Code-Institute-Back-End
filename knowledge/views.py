@@ -10,7 +10,6 @@ def root_route(request):
         "endpoints": {
             "profiles": "/profiles/",
             "followers": "/followers/",
-            "friends": "/friends/",   
             "containers": "/containers/",            
             "posts": "/posts/",        
             "comments": "/comments/",  

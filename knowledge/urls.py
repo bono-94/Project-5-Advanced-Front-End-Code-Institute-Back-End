@@ -20,6 +20,5 @@ urlpatterns = [
     path('', include('followers.urls')),
     path('', include('containers.urls')),
     path('', include('favourites.urls')),
-    path('', include('friends.urls')),
     path('', include('support.urls')),
 ]

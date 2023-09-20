@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from likes.models import Favourite
+from favourites.models import Favourite
 from django.db import IntegrityError
 
 

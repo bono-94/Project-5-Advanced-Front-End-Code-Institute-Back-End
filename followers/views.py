@@ -4,12 +4,10 @@ from knowledge.permissions import IsOwnerOrReadOnly
 from .models import Follower
 from .serializers import FollowerSerializer
 
-# Create your views here.
 
 class FollowerList(generics.ListCreateAPIView):
     """
-    List all followers, i.e. all instances of a user
-    following another user'.
+    List all followers, all instances of a userfollowing another user'.
     Create a follower, i.e. follow a user if logged in.
     Perform_create: associate the current logged in user with a follower.
     """
