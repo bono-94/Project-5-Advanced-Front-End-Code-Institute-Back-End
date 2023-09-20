@@ -1,8 +1,11 @@
 from rest_framework import serializers
 from posts.models import Post
 from likes.models import Like
+from containers.serializers import ContainerSerializer
+
 
 class PostSerializer(serializers.ModelSerializer):
+    
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
@@ -10,11 +13,12 @@ class PostSerializer(serializers.ModelSerializer):
     like_id = serializers.SerializerMethodField()
     likes_count = serializers.ReadOnlyField()
     comments_count = serializers.ReadOnlyField()
+    # container = ContainerSerializer(many=True)
 
     def validate_image(self, value):
-        if value.size > 1024 * 1024 * 2:
+        if value.size > 1024 * 1024 * 4:
             raise serializers.ValidationError(
-                'Image size larger than 2MB!'
+                'Image size larger than 4MB!'
             )
         if value.image.width > 4096:
             raise serializers.ValidationError(
@@ -42,9 +46,24 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = [
-            'id', 'owner', 'is_owner', 'profile_id',
-            'profile_image', 'created_at', 'updated_at',
-            'title', 'content', 'image',
-            'like_id', 'likes_count', 'comments_count',
-            # 'image_filter'
+            'id',
+            'owner',
+            'is_owner',
+            'profile_id',
+            'profile_image',
+            'created_at',
+            'updated_at',
+            'containers',
+            'post_category',
+            'image',
+            'title',
+            'sub_title',
+            'topic',
+            'location',
+            'content', 
+            'inspiration',
+            'source',
+            'like_id',
+            'likes_count',
+            'comments_count',
         ]

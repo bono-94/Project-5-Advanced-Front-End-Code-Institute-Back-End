@@ -130,3 +130,18 @@ class ProfileDetail(APIView):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+
+           post_type_choices = [
+        ('theory', 'Theory'),
+        ('process', 'Process'),
+        ('activity', 'Activity'),
+        ('task', 'Task'),
+        ('step', 'Step'),
+        ('method', 'Method'),
+    ]
+    # keywoards
+    # theory or procedure

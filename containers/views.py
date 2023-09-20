@@ -1,53 +1,23 @@
-from rest_framework import generics, permissions,filters
-from knowledge.permissions import IsOwnerOrReadOnly
-from django.db.models import Count
-from .models import Post
+from rest_framework import generics, permissions
+from .models import Container
 from .serializers import ContainerSerializer
-from django_filters.rest_framework import DjangoFilterBackend
-
+from knowledge.permissions import IsOwnerOrReadOnly
 
 class ContainerList(generics.ListCreateAPIView):
     """
-    List posts or create a post if logged in
-    The perform_create method associates the post with the logged in user.
+    List containers or create a container if logged in.
     """
+    queryset = Container.objects.all()
     serializer_class = ContainerSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    queryset = Post.objects.annotate(
-        likes_count=Count('likes', distinct=True),
-        comments_count=Count('comment', distinct=True)
-    ).order_by('-created_at')
-    filter_backends = [
-        filters.OrderingFilter,
-        filters.SearchFilter,
-        DjangoFilterBackend,
-    ]
-    filterset_fields = [
-        'owner__followed__owner__profile',
-        'likes__owner__profile',
-        'owner__profile',
-    ]
-    search_fields = [
-        'owner__username',
-        'title',
-    ]
-    ordering_fields = [
-        'likes_count',
-        'comments_count',
-        'likes__created_at',
-    ]
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
-
 class ContainerDetail(generics.RetrieveUpdateDestroyAPIView):
     """
-    Retrieve a post and edit or delete it if you own it.
+    Retrieve a container and edit or delete it if you own it.
     """
+    queryset = Container.objects.all()
     serializer_class = ContainerSerializer
     permission_classes = [IsOwnerOrReadOnly]
-    queryset = Post.objects.annotate(
-        likes_count=Count('likes', distinct=True),
-        comments_count=Count('comment', distinct=True)
-    ).order_by('-created_at') 
