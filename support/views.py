@@ -4,6 +4,7 @@ from .serializers import SupportSerializer
 from knowledge.permissions import IsOwnerOrReadOnly
 from django_filters.rest_framework import DjangoFilterBackend
 
+
 class SupportList(generics.ListCreateAPIView):
     """
     List support requests or create a new support request if logged in.

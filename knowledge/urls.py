@@ -1,5 +1,5 @@
 """
-Knowl3dg3 Containers URL Configuration
+Website's URL Configuration
 The `urlpatterns` list routes URLs to views.
 """
 from django.contrib import admin

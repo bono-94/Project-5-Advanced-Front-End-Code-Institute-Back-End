@@ -4,9 +4,9 @@ from .models import Post
 from rest_framework import status
 from rest_framework.test import APITestCase
 
-# Create your tests here.
 
 class PostListViewTests(APITestCase):
+    
     def setUp(self):
         User.objects.create_user(username='adam', password='pass')
 
@@ -31,6 +31,7 @@ class PostListViewTests(APITestCase):
 
 
 class PostDetailViewTests(APITestCase):
+    
     def setUp(self):
         adam = User.objects.create_user(username='adam', password='pass')
         brian = User.objects.create_user(username='brian', password='pass')
@@ -61,5 +62,3 @@ class PostDetailViewTests(APITestCase):
         self.client.login(username='adam', password='pass')
         response = self.client.put('/posts/2/', {'title': 'a new title'})
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-
-# Create your tests here.

@@ -10,6 +10,7 @@ from django.contrib.messages import constants as messages
 if os.path.exists('env.py'):
     import env
 
+
 CLOUDINARY_STORAGE = {
     'CLOUDINARY_URL': os.environ.get('CLOUDINARY_URL')
 }

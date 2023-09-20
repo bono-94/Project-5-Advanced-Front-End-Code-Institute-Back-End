@@ -59,4 +59,3 @@ class ProfileSerializer(serializers.ModelSerializer):
             'bio',
             'website',
         ]
-

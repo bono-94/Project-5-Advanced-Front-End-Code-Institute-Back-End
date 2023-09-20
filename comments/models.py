@@ -6,8 +6,8 @@ from django.utils.timesince import timesince
 
 class Comment(models.Model):
     """
-    Comment model that leaves user input on posts
-    Externally related to User and Post models
+    Comment model that leaves user input on posts.
+    Externally related to User and Post models.
     """
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -23,8 +23,3 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.content
-
-    def number_of_comments(self):
-        return self.title.count()
-
-    

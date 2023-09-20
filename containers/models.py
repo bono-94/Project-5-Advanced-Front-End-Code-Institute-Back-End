@@ -20,6 +20,3 @@ class Container(models.Model):
 
     def __str__(self):
         return self.container_name
-
-    def number_of_containers(self):
-        return self.container_name.count()

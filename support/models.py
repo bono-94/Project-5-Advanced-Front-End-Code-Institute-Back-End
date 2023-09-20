@@ -1,14 +1,17 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Support(models.Model):
     """
-    Support model, related to 'owner', i.e. a User instance.
+    Support model, related to 'owner', a User instance.
     """
     support_type_choices = [
-        ('request', 'Request Knowledge'),
         ('consultacy', 'Book a Consultancy'),
+        ('feedback', 'Feedback'),
+        ('request', 'Request Knowledge'),
         ('support', 'Support Ticket'),
+        ('suggestion', 'Suggestion')        
     ]
 
     created_at = models.DateTimeField(auto_now_add=True)

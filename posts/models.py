@@ -4,7 +4,7 @@ from containers.models import Container
 
 class Post(models.Model):
     """
-    Post model, related to 'owner', i.e. a User instance.
+    Post model, related to 'owner', a User instance.
     Default image set so that we can always reference image.url.
     """
 
@@ -38,9 +38,8 @@ class Post(models.Model):
 
     image = models.ImageField(
         upload_to='post_images/',
-        default='post_images/avatar.jpg',
-        blank=True,
-        null=True
+        blank=False,
+        null=False
     )
     
     title = models.CharField(max_length=42, blank=False, unique=True)
