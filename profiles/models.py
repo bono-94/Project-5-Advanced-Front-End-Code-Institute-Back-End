@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class Profile(models.Model):
@@ -14,28 +15,29 @@ class Profile(models.Model):
         upload_to='profile_images/',
         blank=True,
         null=True,
-        default='../default_profile_qdjgyp'
+        default='profile_images/avatar.jpg'
     )
     
     profile_quote = models.CharField(max_length=84, blank=True, null=True)
 
-    first_name = models.CharField(max_length=255, blank=True)
-    location = models.CharField(max_length=255, blank=True)
-    bio = models.TextField(blank=True)
-    # Contact
-    # Social media
-    website_link = models.URLField(
+    first_name = models.CharField(max_length=42, blank=True, null=True)
+    location = models.CharField(max_length=42, blank=True, null=True)
+    age = models.PositiveIntegerField(
+        validators=[
+            MinValueValidator(0, "Age cannot be negative."),
+            MaxValueValidator(121,  "Age must be 120 or less.")
+        ],
+        null=True,
+        blank=True
+    )
+    bio = models.TextField(max_length=210, blank=True, null=True)
+
+    website = models.URLField(
         max_length=210,
         unique=True,
         blank=True,
         null=True,
     )
-
-    hours_per_week = models.PositiveIntegerField(
-        null=True,
-        blank=True
-        )
-
 
     class Meta:
         ordering = ['-created_at']

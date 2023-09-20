@@ -11,6 +11,21 @@ class ProfileSerializer(serializers.ModelSerializer):
     followers_count = serializers.ReadOnlyField()
     following_count = serializers.ReadOnlyField()
 
+    def validate_image(self, value):
+        if value.size > 1024 * 1024 * 4:
+            raise serializers.ValidationError(
+                'Image size larger than 4MB!'
+            )
+        if value.image.width > 4096:
+            raise serializers.ValidationError(
+                'Image width larger than 4096px!'
+            )
+        if value.image.height > 4096:
+            raise serializers.ValidationError(
+                'Image height larger than 4096px!'
+            )
+        return value
+
     def get_is_owner(self, obj):
         request = self.context['request']
         return request.user == obj.owner
@@ -21,15 +36,27 @@ class ProfileSerializer(serializers.ModelSerializer):
             following = Follower.objects.filter(
                 owner=user, followed=obj.owner
             ).first()
-            # print(following)
             return following.id if following else None
         return None
 
     class Meta:
         model = Profile
         fields = [
-            'id', 'owner', 'created_at', 'updated_at', 'name',
-            'content', 'image', 'is_owner', 'following_id',
-            'posts_count', 'followers_count', 'following_count', 
+            'id',
+            'owner',
+            'is_owner',
+            'following_id',
+            'followers_count',
+            'following_count', 
+            'posts_count',
+            'created_at',
+            'updated_at',
+            'image',
+            'profile_quote',
+            'first_name',
+            'location',
+            'age',  
+            'bio',
+            'website',
         ]
 

@@ -37,8 +37,8 @@ class Post(models.Model):
     )
 
     image = models.ImageField(
-        upload_to='images/',
-        default='../default_post_rgq6aq',
+        upload_to='post_images/',
+        default='post_images/avatar.jpg',
         blank=True,
         null=True
     )

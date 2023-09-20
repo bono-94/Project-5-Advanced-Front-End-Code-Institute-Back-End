@@ -13,7 +13,6 @@ class PostSerializer(serializers.ModelSerializer):
     like_id = serializers.SerializerMethodField()
     likes_count = serializers.ReadOnlyField()
     comments_count = serializers.ReadOnlyField()
-    # container = ContainerSerializer(many=True)
 
     def validate_image(self, value):
         if value.size > 1024 * 1024 * 4:
