@@ -38,6 +38,7 @@ class Post(models.Model):
 
     image = models.ImageField(
         upload_to='post_images/',
+        default='post_images/tree.jpg',
         blank=False,
         null=False
     )
