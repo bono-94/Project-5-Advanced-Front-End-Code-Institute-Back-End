@@ -70,7 +70,7 @@ DEBUG = 'DEV' in os.environ
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 ALLOWED_HOSTS = [
-    os.environ('ALLOWED_HOST'),
+    os.environ['ALLOWED_HOST'],
     'localhost',
     '8000-bono94-project5advanced-xf08rh8gook.ws-eu104.gitpod.io'
     ]
