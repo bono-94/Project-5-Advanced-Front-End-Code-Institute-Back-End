@@ -1,6 +1,6 @@
 """
 Admin configuration for managing models in the Django admin site.
-This file registers relevant model and customizes the admin interface.
+This file registers relevant model.
 """
 
 from django.contrib import admin

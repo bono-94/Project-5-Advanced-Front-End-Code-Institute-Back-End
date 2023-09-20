@@ -1,3 +1,9 @@
-from django.contrib import admin
+"""
+Admin configuration for managing models in the Django admin site.
+This file registers relevant model.
+"""
 
-# Register your models here.
+from django.contrib import admin
+from .models import *
+
+admin.site.register(Like)
