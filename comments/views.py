@@ -5,8 +5,6 @@ from django_filters.rest_framework import DjangoFilterBackend
 from .models import Comment
 from .serializers import CommentSerializer, CommentDetailSerializer
 
-# Create your views here.
-
 class CommentList(generics.ListCreateAPIView):
     """
     List comments or create a comment if logged in.
@@ -23,10 +21,8 @@ class CommentList(generics.ListCreateAPIView):
 
 class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
     """
-    Retrieve a comment, or update or delete it by id if you own it.
+    Retrieve a comment, or update or delete it by id if user is owner.
     """
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = CommentDetailSerializer
     queryset = Comment.objects.all()
-
-# Create your views here.

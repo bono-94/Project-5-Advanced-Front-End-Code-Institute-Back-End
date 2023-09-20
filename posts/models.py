@@ -40,9 +40,13 @@ class Post(models.Model):
     )
     
     title = models.CharField(max_length=255)
+    # location = models.CharField(max_length=255)
     # subtitle
     # summary
     content = models.TextField(blank=True)
+
+
+    views = models.IntegerField(default=0)
 
     # processes
     # activities
@@ -62,5 +66,9 @@ class Post(models.Model):
 
     def __str__(self):
         return f'{self.id} {self.title}'
+
+         # COUNTING PUBLIC VOTES
+    def number_of_votes(self):
+        return self.votes.count()
 
     # How long ago validation

@@ -1,11 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
 from posts.models import Post
+from django.utils.timesince import timesince
 
 
 class Comment(models.Model):
     """
-    Comment model, related to User and Post
+    Comment model that leaves user input on posts
+    Externally related to User and Post models
     """
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -13,8 +15,8 @@ class Comment(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
    
-    title = models.CharField(max_length=42)
-    content = models.TextField()
+    title = models.CharField(max_length=42, blank=False, unique=True)
+    content = models.TextField(max_length=420, blank=False)
 
     class Meta:
         ordering = ['-created_at']
@@ -22,5 +24,7 @@ class Comment(models.Model):
     def __str__(self):
         return self.content
 
-    # How long ago validation
+    def number_of_comments(self):
+        return self.title.count()
+
     

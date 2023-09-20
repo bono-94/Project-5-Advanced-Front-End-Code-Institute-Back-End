@@ -11,15 +11,30 @@ class Profile(models.Model):
     owner = models.OneToOneField(User, on_delete=models.CASCADE)
     
     image = models.ImageField(
-        upload_to='images/', default='../default_profile_qdjgyp'
+        upload_to='profile_images/',
+        blank=True,
+        null=True,
+        default='../default_profile_qdjgyp'
     )
     
+    profile_quote = models.CharField(max_length=84, blank=True, null=True)
 
     first_name = models.CharField(max_length=255, blank=True)
     location = models.CharField(max_length=255, blank=True)
     bio = models.TextField(blank=True)
     # Contact
     # Social media
+    website_link = models.URLField(
+        max_length=210,
+        unique=True,
+        blank=True,
+        null=True,
+    )
+
+    hours_per_week = models.PositiveIntegerField(
+        null=True,
+        blank=True
+        )
 
 
     class Meta:
