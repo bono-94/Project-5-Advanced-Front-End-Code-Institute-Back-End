@@ -8,14 +8,14 @@ def root_route(request):
         "message": "Welcome to KNOWL3DG3 Containers!",
         "description": "This is an API for managing container information.",
         "endpoints": {
-            "profiles": "/api/profiles/",
-            "followers": "/api/followers/",
-            "friends": "/api/friends/",   
-            "containers": "/api/containers/",            
-            "posts": "/api/posts/",        
-            "comments": "/api/comments/",  
-            "likes": "/api/likes/",        
-            "favourites": "/api/favourites/", 
-            "support": "/api/support/",
+            "profiles": "/profiles/",
+            "followers": "/followers/",
+            "friends": "/friends/",   
+            "containers": "/containers/",            
+            "posts": "/posts/",        
+            "comments": "/comments/",  
+            "likes": "/likes/",        
+            "favourites": "/favourites/", 
+            "support": "/support/",
         }
     })

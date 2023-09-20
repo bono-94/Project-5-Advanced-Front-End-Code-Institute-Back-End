@@ -33,6 +33,3 @@ class ProfileSerializer(serializers.ModelSerializer):
             'posts_count', 'followers_count', 'following_count', 
         ]
 
-
-# class PostSerializer(serializers.ModelSerializer):
-#     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
