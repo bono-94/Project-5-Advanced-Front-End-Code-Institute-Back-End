@@ -1,53 +1,26 @@
-from rest_framework import generics, permissions,filters
+from rest_framework import generics, permissions
+from .models import Support
+from .serializers import SupportSerializer
 from knowledge.permissions import IsOwnerOrReadOnly
-from django.db.models import Count
-from .models import Post
-from .serializers import FavouriteSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 
-
-class FavouriteList(generics.ListCreateAPIView):
+class SupportList(generics.ListCreateAPIView):
     """
-    List posts or create a post if logged in
-    The perform_create method associates the post with the logged in user.
+    List support requests or create a new support request if logged in.
     """
-    serializer_class = FavouriteSerializer
+    serializer_class = SupportSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    queryset = Post.objects.annotate(
-        likes_count=Count('likes', distinct=True),
-        comments_count=Count('comment', distinct=True)
-    ).order_by('-created_at')
-    filter_backends = [
-        filters.OrderingFilter,
-        filters.SearchFilter,
-        DjangoFilterBackend,
-    ]
-    filterset_fields = [
-        'owner__followed__owner__profile',
-        'likes__owner__profile',
-        'owner__profile',
-    ]
-    search_fields = [
-        'owner__username',
-        'title',
-    ]
-    ordering_fields = [
-        'likes_count',
-        'comments_count',
-        'likes__created_at',
-    ]
+    queryset = Support.objects.all()
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['support_type']
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
-
-class FavouriteDetail(generics.RetrieveUpdateDestroyAPIView):
+class SupportDetail(generics.RetrieveUpdateDestroyAPIView):
     """
-    Retrieve a post and edit or delete it if you own it.
+    Retrieve, update, or delete a support request by ID if the user is the owner.
     """
-    serializer_class = FavouriteSerializer
+    serializer_class = SupportSerializer
     permission_classes = [IsOwnerOrReadOnly]
-    queryset = Post.objects.annotate(
-        likes_count=Count('likes', distinct=True),
-        comments_count=Count('comment', distinct=True)
-    ).order_by('-created_at') 
+    queryset = Support.objects.all()

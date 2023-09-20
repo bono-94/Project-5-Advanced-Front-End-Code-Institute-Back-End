@@ -9,11 +9,6 @@ class Support(models.Model):
         ('request', 'Request Knowledge'),
         ('consultacy', 'Book a Consultancy'),
         ('support', 'Support Ticket'),
-        ('blog', 'Blog'),
-    ]
-    status = [
-        ('open', 'Open'),
-        ('closed', 'Closed')
     ]
 
     created_at = models.DateTimeField(auto_now_add=True)
@@ -21,25 +16,20 @@ class Support(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
     support_type = models.CharField(
-        max_length=32,
-        choices=support_type_choices, default='idea'
+        max_length=21,
+        choices=support_type_choices,
+        blank=False,
+        default='support'
     )
 
-    title = models.CharField(max_length=255)
-    content = models.TextField(blank=True)
-    support_ticket = models.IntegerField(blank=True)
-    image = models.ImageField(
-        upload_to='images/', default='../default_post_rgq6aq', blank=True
-    )
-    # datetime
-    # main question for consultancy
-    # content vs functional support
+    title = models.CharField(max_length=84, blank=False)
+    content = models.TextField(max_length=2100, blank=False)
 
+    container_name = models.CharField(max_length=42, blank=True, null=True)
+    knowledge_name = models.CharField(max_length=42, blank=True, null=True)
 
     class Meta:
         ordering = ['-created_at']
 
     def __str__(self):
-        return f'{self.id} {self.title}'
-
-    # How long ago validation
+        return f'{self.id} - {self.title}'
