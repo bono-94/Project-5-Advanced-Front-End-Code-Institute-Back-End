@@ -72,7 +72,8 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 ALLOWED_HOSTS = [
     os.environ['ALLOWED_HOST'],
     'localhost',
-    '8000-bono94-project5advanced-xf08rh8gook.ws-eu104.gitpod.io'
+    'https://8000-bono94-project5advanced-xf08rh8gook.ws-eu104.gitpod.io/',
+    'https://3000-bono94-project5advanced-9byzkqmo2s8.ws-eu104.gitpod.io/'
     ]
 
 INSTALLED_APPS = [
