@@ -70,6 +70,7 @@ DEBUG = 'DEV' in os.environ
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 ALLOWED_HOSTS = [
+    os.environ.get('ALLOWED_HOST'),
     'knowledge-back-end-249814ef8ad4.herokuapp.com',
     'knowledge-front-end-1366ec6c3d29.herokuapp.com',
     'localhost',
