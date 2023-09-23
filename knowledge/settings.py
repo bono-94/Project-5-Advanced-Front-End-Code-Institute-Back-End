@@ -71,11 +71,11 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 ALLOWED_HOSTS = [
     os.environ.get('ALLOWED_HOST'),
-    'https://knowledge-back-end-249814ef8ad4.herokuapp.com',
-    'https://knowledge-front-end-1366ec6c3d29.herokuapp.com',
-    'https://localhost',
-    'https://8000-bono94-project5advanced-xf08rh8gook.ws-eu104.gitpod.io',
-    'https://3000-bono94-project5advanced-9byzkqmo2s8.ws-eu104.gitpod.io'
+    'knowledge-back-end-249814ef8ad4.herokuapp.com',
+    'knowledge-front-end-1366ec6c3d29.herokuapp.com',
+    'localhost',
+    '8000-bono94-project5advanced-xf08rh8gook.ws-eu104.gitpod.io',
+    '3000-bono94-project5advanced-9byzkqmo2s8.ws-eu104.gitpod.io'
 ]
 
 INSTALLED_APPS = [
