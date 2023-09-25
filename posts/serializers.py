@@ -74,7 +74,7 @@ class PostSerializer(serializers.ModelSerializer):
             'inspiration',
             'source',
             'favourite_id',
-            'favourites_id',
+            'favourites_count',
             'like_id',
             'likes_count',
             'comments_count',
