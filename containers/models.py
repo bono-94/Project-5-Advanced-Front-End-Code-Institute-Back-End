@@ -13,7 +13,7 @@ class Container(models.Model):
     is_public = models.BooleanField(default=True)
 
     container_name = models.CharField(max_length=42, blank=False)
-    container_info = models.TextField(max_length=420, blank=False)
+    container_info = models.TextField(max_length=210, blank=False)
     
     class Meta:
         ordering = ['container_name']

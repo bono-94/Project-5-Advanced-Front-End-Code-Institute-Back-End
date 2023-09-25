@@ -14,6 +14,7 @@ class PostList(generics.ListCreateAPIView):
     serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Post.objects.annotate(
+        favourites_count=Count('favourites', distinct=True),
         likes_count=Count('likes', distinct=True),
         comments_count=Count('comment', distinct=True)
     ).order_by('-created_at')
@@ -36,6 +37,7 @@ class PostList(generics.ListCreateAPIView):
     ]
     
     ordering_fields = [
+        'favourites_count'
         'likes_count',
         'comments_count',
         'likes__created_at',
@@ -53,5 +55,6 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Post.objects.annotate(
         likes_count=Count('likes', distinct=True),
+        favourites_count=Count('favourites', distinct=True),
         comments_count=Count('comment', distinct=True),
     ).order_by('-created_at') 

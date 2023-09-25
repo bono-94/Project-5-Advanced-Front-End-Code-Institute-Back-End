@@ -19,6 +19,7 @@ class Post(models.Model):
         ('news', 'News'),
         ('review', 'Review'),
         ('story', 'Story'),
+        ('theory', 'Theory'),
         ('tutorial', 'Tutorial'),
         ('question', 'Question'),
     ]
@@ -48,7 +49,7 @@ class Post(models.Model):
     topic = models.CharField(max_length=42, blank=False, unique=True)
     location = models.CharField(max_length=42, blank=False)
     content = models.TextField(max_length=2100, blank=True)
-    inspiration = models.CharField(max_length=420, blank=False)
+    inspiration = models.CharField(max_length=840, blank=False)
     source = models.CharField(max_length=420, blank=False)
 
     class Meta:

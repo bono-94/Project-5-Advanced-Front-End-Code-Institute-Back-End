@@ -30,10 +30,10 @@ class Profile(models.Model):
         null=True,
         blank=True
     )
-    bio = models.TextField(max_length=210, blank=True, null=True)
+    bio = models.TextField(max_length=840, blank=True, null=True)
 
     website = models.URLField(
-        max_length=210,
+        max_length=840,
         unique=True,
         blank=True,
         null=True,

@@ -25,7 +25,7 @@ class Support(models.Model):
         default='support'
     )
 
-    title = models.CharField(max_length=84, blank=False)
+    title = models.CharField(max_length=42, blank=False)
     content = models.TextField(max_length=2100, blank=False)
 
     container_name = models.CharField(max_length=42, blank=True, null=True)
