@@ -3,6 +3,7 @@ from posts.models import Post
 from likes.models import Like
 from favourites.models import Favourite
 from containers.serializers import ContainerSerializer
+from containers.models import Container
 
 
 class PostSerializer(serializers.ModelSerializer):

@@ -75,6 +75,7 @@ ALLOWED_HOSTS = [
     'knowledge-front-end-1366ec6c3d29.herokuapp.com',
     'localhost',
     '8000-bono94-project5advanced-xf08rh8gook.ws-eu104.gitpod.io',
+    '8000-bono94-project5advanced-xf08rh8gook.ws-eu105.gitpod.io',
     '3000-bono94-project5advanced-9byzkqmo2s8.ws-eu104.gitpod.io'
 ]
 
