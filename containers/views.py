@@ -22,3 +22,11 @@ class ContainerDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Container.objects.all()
     serializer_class = ContainerSerializer
     permission_classes = [IsOwnerOrReadOnly]
+
+class PublicContainerList(generics.ListAPIView):
+    queryset = Container.objects.filter(is_public=True)
+    serializer_class = ContainerSerializer
+
+class PrivateContainerList(generics.ListAPIView):
+    queryset = Container.objects.filter(is_public=False)
+    serializer_class = ContainerSerializer
