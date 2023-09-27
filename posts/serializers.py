@@ -16,6 +16,10 @@ class PostSerializer(serializers.ModelSerializer):
     favourite_id = serializers.SerializerMethodField()
     favourites_count = serializers.ReadOnlyField()
     comments_count = serializers.ReadOnlyField()
+    containers = serializers.PrimaryKeyRelatedField(
+        queryset=Container.objects.all(),
+        many=True
+    )
 
     def validate_image(self, value):
         if value.size > 1024 * 1024 * 4:
