@@ -9,7 +9,7 @@ class ContainerList(generics.ListCreateAPIView):
     """
     List containers or create a container if logged in.
     """
-    queryset = Container.objects.all()
+    queryset = Container.objects.filter(is_public=False)
     serializer_class = ContainerSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
@@ -43,15 +43,65 @@ class ContainerDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     queryset = Container.objects.all()
     serializer_class = ContainerSerializer
-    permission_classes = [IsOwnerOrReadOnly]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 class PublicContainerList(generics.ListAPIView):
     queryset = Container.objects.filter(is_public=True)
     serializer_class = ContainerSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+    filter_backends = [
+        filters.OrderingFilter,
+        filters.SearchFilter,
+        DjangoFilterBackend,
+    ]
+
+    filterset_fields = [
+        'is_public',                  # Add fields you want to filter on
+    ]
+
+    search_fields = [
+        'owner__username',
+        'container_name',             # Add fields you want to search on
+        'container_info',                # Add other fields you want to search on
+    ]
+
+    ordering_fields = [
+        'created_at',                 # Add fields you want to enable ordering on
+        'container_name',             # Add other fields you want to enable ordering on
+    ]
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
 
 class PrivateContainerList(generics.ListAPIView):
     queryset = Container.objects.filter(is_public=False)
     serializer_class = ContainerSerializer
+    permission_classes = [IsOwnerOrReadOnly]
+
+    filter_backends = [
+        filters.OrderingFilter,
+        filters.SearchFilter,
+        DjangoFilterBackend,
+    ]
+
+    filterset_fields = [
+        'is_public',                  # Add fields you want to filter on
+    ]
+
+    search_fields = [
+        'owner__username',
+        'container_name',             # Add fields you want to search on
+        'container_info',                # Add other fields you want to search on
+    ]
+
+    ordering_fields = [
+        'created_at',                 # Add fields you want to enable ordering on
+        'container_name',             # Add other fields you want to enable ordering on
+    ]
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
 
 class ContainerSearch(generics.ListAPIView):
     serializer_class = ContainerSearchSerializer
