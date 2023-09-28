@@ -58,3 +58,7 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
         favourites_count=Count('favourites', distinct=True),
         comments_count=Count('comment', distinct=True),
     ).order_by('-created_at') 
+
+    def get_queryset(self):
+        container_ids = self.request.GET.getlist('containers[]', [])
+        return Post.objects.filter(containers__id__in=container_ids)
