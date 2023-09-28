@@ -59,6 +59,10 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
         comments_count=Count('comment', distinct=True),
     ).order_by('-created_at') 
 
+
+class PostListByContainers(generics.ListAPIView):
+    serializer_class = PostSerializer
+
     def get_queryset(self):
         container_ids = self.request.GET.getlist('containers[]', [])
         return Post.objects.filter(containers__id__in=container_ids)
