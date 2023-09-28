@@ -21,7 +21,6 @@ class PostSerializer(serializers.ModelSerializer):
         queryset=Container.objects.all(),
         many=True
     )
-    containers_second = ContainerSerializer(many=True, read_only=True)
 
     def validate_image(self, value):
         if value.size > 1024 * 1024 * 4:
@@ -71,7 +70,6 @@ class PostSerializer(serializers.ModelSerializer):
             'created_at',
             'updated_at',
             'containers',
-            'containers_second',
             'post_category',
             'image',
             'title',
