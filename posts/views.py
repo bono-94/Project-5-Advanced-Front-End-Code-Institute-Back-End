@@ -42,6 +42,7 @@ class PostList(generics.ListCreateAPIView):
         'likes_count',
         'comments_count',
         'likes__created_at',
+        'favourites__created_at',
     ]
 
     def perform_create(self, serializer):
