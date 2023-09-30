@@ -28,7 +28,7 @@ class PostList(generics.ListCreateAPIView):
     filterset_fields = [
         'owner__followed__owner__profile',
         'likes__owner__profile',
-        'favourites_owner_profile',
+        'favourites__owner__profile',
         'owner__profile',
     ]
 
