@@ -63,12 +63,13 @@ class PublicContainerList(generics.ListAPIView):
     search_fields = [
         'owner__username',
         'container_name',             # Add fields you want to search on
-        'container_info',                # Add other fields you want to search on
+        'container_info'               # Add other fields you want to search on
     ]
 
     ordering_fields = [
         'created_at',                 # Add fields you want to enable ordering on
         'container_name',             # Add other fields you want to enable ordering on
+        'owner__username'
     ]
 
     def perform_create(self, serializer):

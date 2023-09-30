@@ -31,4 +31,4 @@ class ContainerSerializer(serializers.ModelSerializer):
 class ContainerSearchSerializer(serializers.ModelSerializer):
     class Meta:
         model = Container
-        fields = ['id', 'container_name', 'description']
+        fields = ['id', 'container_name', 'container_info']
