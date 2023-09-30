@@ -17,6 +17,7 @@ class PostSerializer(serializers.ModelSerializer):
     favourite_id = serializers.SerializerMethodField()
     favourites_count = serializers.ReadOnlyField()
     comments_count = serializers.ReadOnlyField()
+    containers_count = serializers.ReadOnlyField()
     containers = serializers.PrimaryKeyRelatedField(
         queryset=Container.objects.all(),
         many=True
@@ -84,4 +85,5 @@ class PostSerializer(serializers.ModelSerializer):
             'like_id',
             'likes_count',
             'comments_count',
+            'containers_count',
         ]
