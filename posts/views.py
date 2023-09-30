@@ -30,7 +30,8 @@ class PostList(generics.ListCreateAPIView):
         'owner__followed__owner__profile',
         'likes__owner__profile',
         'favourites__owner__profile',
-        'owner__profile'
+        'owner__profile',
+        'containers',
     ]
 
     search_fields = [
@@ -41,7 +42,7 @@ class PostList(generics.ListCreateAPIView):
         'updated_at',
         'post_category',
         'topic',
-        'content'
+        'content',
     ]
     
     ordering_fields = [
