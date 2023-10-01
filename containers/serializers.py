@@ -27,8 +27,3 @@ class ContainerSerializer(serializers.ModelSerializer):
             'profile_id',
             'profile_image'
         ]
-
-class ContainerSearchSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Container
-        fields = ['id', 'container_name', 'container_info']

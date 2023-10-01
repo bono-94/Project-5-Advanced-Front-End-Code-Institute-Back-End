@@ -37,9 +37,7 @@ class PostList(generics.ListCreateAPIView):
     search_fields = [
         'owner__username',
         'title',
-        'containers',
-        'created_at',
-        'updated_at',
+        'sub_title',
         'post_category',
         'topic',
         'content',

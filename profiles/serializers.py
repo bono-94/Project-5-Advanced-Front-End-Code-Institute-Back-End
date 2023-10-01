@@ -10,6 +10,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     posts_count = serializers.ReadOnlyField()
     followers_count = serializers.ReadOnlyField()
     following_count = serializers.ReadOnlyField()
+    containers_count = serializers.ReadOnlyField()
 
     def validate_image(self, value):
         if value.size > 1024 * 1024 * 4:
@@ -48,6 +49,7 @@ class ProfileSerializer(serializers.ModelSerializer):
             'following_id',
             'followers_count',
             'following_count', 
+            'containers_count',
             'posts_count',
             'created_at',
             'updated_at',
