@@ -52,7 +52,9 @@ class PostList(generics.ListCreateAPIView):
         'favourites__created_at',
         'title',
         'topic',
-        'post_category'
+        'post_category',
+        'created_at',
+        'updated_at',
     ]
 
     def perform_create(self, serializer):
