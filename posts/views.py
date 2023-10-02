@@ -4,6 +4,8 @@ from django.db.models import Count
 from .models import Post
 from .serializers import PostSerializer
 from django_filters.rest_framework import DjangoFilterBackend
+import json
+from rest_framework.generics import get_object_or_404
 
 
 class PostList(generics.ListCreateAPIView):
@@ -58,7 +60,14 @@ class PostList(generics.ListCreateAPIView):
     ]
 
     def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+
+        data = self.request.data
+        containers = data.get("containers")
+
+        if containers:
+            containers = json.loads(containers)
+
+        serializer.save(owner=self.request.user, containers=containers)
 
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -73,3 +82,15 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
         comments_count=Count('comment', distinct=True),
         containers_count=Count('containers', distinct=True)
     ).order_by('-created_at') 
+
+    def perform_update(self, serializer):
+        data = self.request.data
+        containers = data.get("containers")
+
+        if containers:
+            containers = json.loads(containers)
+
+        serializer.save(containers=containers)
+
+    def perform_destroy(self, instance):
+        instance.delete()
