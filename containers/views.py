@@ -3,13 +3,12 @@ from .models import Container
 from .serializers import ContainerSerializer
 from knowledge.permissions import IsOwnerOrReadOnly
 from django_filters.rest_framework import DjangoFilterBackend
-
+from django.db.models import Q
 
 class ContainerList(generics.ListCreateAPIView):
     """
     List containers or create a container if logged in.
     """
-    queryset = Container.objects.filter(is_public=False)
     serializer_class = ContainerSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
@@ -35,8 +34,16 @@ class ContainerList(generics.ListCreateAPIView):
         'owner__username'           
     ]
 
+    def get_queryset(self):
+        user = self.request.user
+
+        queryset = Container.objects.filter(Q(is_public=True) | (Q(is_public=False) & Q(owner=user)))
+
+        return queryset
+
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
 
 class ContainerDetail(generics.RetrieveUpdateDestroyAPIView):
     """
