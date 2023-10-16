@@ -4,6 +4,7 @@ from .serializers import ContainerSerializer
 from knowledge.permissions import IsOwnerOrReadOnly
 from django_filters.rest_framework import DjangoFilterBackend
 from django.db.models import Q
+from containers.pagination import NoPagination
 
 class ContainerList(generics.ListCreateAPIView):
     """
@@ -11,6 +12,7 @@ class ContainerList(generics.ListCreateAPIView):
     """
     serializer_class = ContainerSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    pagination_class = NoPagination
 
     filter_backends = [
         filters.OrderingFilter,
