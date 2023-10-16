@@ -7,7 +7,7 @@ class Support(models.Model):
     Support model, related to 'owner', a User instance.
     """
     support_type_choices = [
-        ('consultacy', 'Book a Consultancy'),
+        ('consultancy', 'Book a Consultancy'),
         ('feedback', 'Feedback'),
         ('request', 'Request Knowledge'),
         ('support', 'Support Ticket'),

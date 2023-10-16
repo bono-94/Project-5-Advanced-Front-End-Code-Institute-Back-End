@@ -45,10 +45,10 @@ class Post(models.Model):
     )
     
     title = models.CharField(max_length=42, blank=False, unique=True)
-    sub_title = models.CharField(max_length=84, blank=False)
-    topic = models.CharField(max_length=42, blank=False, unique=True)
+    sub_title = models.CharField(max_length=84, blank=False, unique=True)
+    topic = models.CharField(max_length=42, blank=False)
     location = models.CharField(max_length=42, blank=False)
-    content = models.TextField(max_length=2100, blank=True)
+    content = models.TextField(max_length=2100, blank=False)
     inspiration = models.CharField(max_length=840, blank=False)
     source = models.CharField(max_length=420, blank=False)
 
