@@ -62,7 +62,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='post',
             name='topic',
-            field=models.CharField(default=django.utils.timezone.now, max_length=42, unique=True),
+            field=models.CharField(default=django.utils.timezone.now, max_length=42, unique=False),
             preserve_default=False,
         ),
         migrations.AlterField(
