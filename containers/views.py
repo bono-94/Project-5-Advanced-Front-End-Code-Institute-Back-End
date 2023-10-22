@@ -65,18 +65,18 @@ class PublicContainerList(generics.ListAPIView):
     ]
 
     filterset_fields = [
-        'is_public',                  # Add fields you want to filter on
+        'is_public',                 
     ]
 
     search_fields = [
         'owner__username',
-        'container_name',             # Add fields you want to search on
-        'container_info'               # Add other fields you want to search on
+        'container_name',             
+        'container_info'               
     ]
 
     ordering_fields = [
-        'created_at',                 # Add fields you want to enable ordering on
-        'container_name',             # Add other fields you want to enable ordering on
+        'created_at',
+        'container_name',            
         'owner__username'
     ]
 
